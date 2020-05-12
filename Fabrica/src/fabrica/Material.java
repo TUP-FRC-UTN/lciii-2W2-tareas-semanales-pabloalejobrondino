@@ -47,7 +47,7 @@ public class Material {
 
     @Override
     public String toString() {
-        return "descripcion = " + descripcionMaterial + ", codigo = " + codigo + ", valor Unitario = " + valorUnitario ;
+        return "descripcion = " + this.getDescripcionMaterial() + ", codigo = " + codigo + ", valor Unitario = " + valorUnitario ;
     }
     
     

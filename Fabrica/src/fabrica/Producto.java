@@ -52,10 +52,13 @@ public class Producto {
 //    Desarrolle en la clase Producto un método que reciba por parámetro 
 //    un código de material y retorne true si dicho material forma parte del Producto
     public boolean esta(int codigo) {
+
         boolean esta = false;
         for (int i = 0; i < arrayMateriales.length; i++) {
             if (arrayMateriales[i] != null && arrayMateriales[i].getCodigo() == codigo) {
                 esta = true;
+
+                break;
             }
 
         }
@@ -64,38 +67,56 @@ public class Producto {
     //Desarrolle en la clase producto un método que retorne un vector con todos 
     //los materiales que tengan un valor unitario menor a un parámetro.
 
-//    public Material[] menorValor() {
-//       
-//        return materialeXvalor;
-//    }
-    
-//    public int[] materialXPrecio(){
-//        int materialXPrecio[]=new int[4];
-//        int contador1=0;
-//        int contador2=0;
-//        int contador3=0;
-//        int contador4=0;
-//        
+    public Material[] menorValor(double valorComparacion) {
+        Material[] materialesVaratos = new Material[arrayMateriales.length];
+        int proximaPosicion = 0;
+        for (int i = 0; i < arrayMateriales.length; i++) {
+            if (arrayMateriales[i] != null && arrayMateriales[i].getValorUnitario() < valorComparacion) {
+                materialesVaratos[proximaPosicion] = arrayMateriales[i];
+                proximaPosicion++;
+            }
+        }
+        return materialesVaratos;
+    }
+    public int [] cantidadXPrecio()
+     {
+         int [] cantidadesXPrecio = new int [4];
+         
+         for (int i = 0; i < arrayMateriales.length; i++) {
+             if(arrayMateriales[i] != null)
+             {
+                 if(arrayMateriales[i].getValorUnitario() > 0 &&  arrayMateriales[i].getValorUnitario() <= 10)
+                     cantidadesXPrecio[0]++;
+                 else if(arrayMateriales[i].getValorUnitario() > 10 &&  arrayMateriales[i].getValorUnitario() <= 20)
+                     cantidadesXPrecio[1]++;
+                 else if(arrayMateriales[i].getValorUnitario() > 20 &&  arrayMateriales[i].getValorUnitario() <= 30)
+                     cantidadesXPrecio[2]++;
+                 else 
+                     cantidadesXPrecio[3]++;
+             }
+             
+         }
+         
+         return cantidadesXPrecio;
+     }
+
+//    public int[] materialXPrecio() {
+//        int materialXPrecio[] = new int[4];
+//
 //        for (int i = 0; i < materialXPrecio.length; i++) {
-//            if (arrayMateriales[i]!=null && arrayMateriales[i].getValorUnitario()>0 && arrayMateriales[i].getValorUnitario()<=10) {
-//                contador1+=contador1;
+//            if (arrayMateriales[i] != null) {
+//                if (arrayMateriales[i].getValorUnitario() > 0 && arrayMateriales[i].getValorUnitario() <= 10) {
+//                    materialXPrecio[0]++;
+//                } else if (arrayMateriales[i].getValorUnitario() > 10 && arrayMateriales[i].getValorUnitario() <= 20) {
+//                    materialXPrecio[1]++;
+//                } else if (arrayMateriales[i].getValorUnitario() > 20 && arrayMateriales[i].getValorUnitario() <= 30) {
+//                    materialXPrecio[2]++;
+//                }
+//                if (arrayMateriales[i] != null && arrayMateriales[i].getValorUnitario() > 30) {
+//                    materialXPrecio[3]++;
+//                }
 //            }
-//             if (arrayMateriales[i]!=null && arrayMateriales[i].getValorUnitario()>10 && arrayMateriales[i].getValorUnitario()<=20) {
-//                contador2+=contador2;
-//            }
-//              if (arrayMateriales[i]!=null && arrayMateriales[i].getValorUnitario()>20 && arrayMateriales[i].getValorUnitario()<=30) {
-//                contador1+=contador3;
-//            }
-//               if (arrayMateriales[i]!=null && arrayMateriales[i].getValorUnitario()>30 && arrayMateriales[i].getValorUnitario()<=40) {
-//                contador1+=contador4;
-//            }
-//          
 //        }
-//        materialXPrecio[0]=contador1;
-//        materialXPrecio[1]=contador2;
-//        materialXPrecio[2]=contador3;
-//        materialXPrecio[3]=contador4;
-//        
-//        System.out.println();
+//        return materialXPrecio;
 //    }
 }
